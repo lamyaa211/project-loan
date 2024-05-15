@@ -1,17 +1,15 @@
 package net.nak.entities;
 
-
 import lombok.*;
 import javax.persistence.*;
 
-@Entity
+@MappedSuperclass
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter @Builder
 public class Annexe {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    // Vous pouvez supprimer l'annotation @Id et @GeneratedValue
+    // private Long id;
 
     private String codebq;
 
@@ -21,5 +19,6 @@ public class Annexe {
 
     private String numero;
 
+    // Si besoin, vous pouvez ajouter des méthodes ou des attributs communs à toutes les classes enfants ici
 
 }
