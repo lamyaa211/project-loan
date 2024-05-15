@@ -16,4 +16,7 @@ public class Annexe {
 
     private String numero;
 
+    private String lamyaa;
+    private String anwar;
+
 }
