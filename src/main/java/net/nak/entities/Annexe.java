@@ -1,19 +1,28 @@
 package net.nak.entities;
 
-import lombok.*;
 import javax.persistence.*;
+import lombok.*;
 
-@MappedSuperclass
+@Entity
 @AllArgsConstructor @NoArgsConstructor
-@Getter @Setter @Builder
+@Getter @Setter
+@Table(name="Annexe")
 public class Annexe {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "annexe_id")
+    private Long id;
 
-    private String codebq;
+    @Column(name = "code_bq")
+    private String codeBq;
 
-    private String codeproduit;
+    @ManyToOne
+    @JoinColumn(name = "code_produit")
+    private Produit produit;
 
-    private String nbreligne;
+    @Column(name = "nbre_ligne")
+    private String nbreLigne;
 
-    private String numero;
-
+    @Column(name = "numero_annexe")
+    private String numeroAnnexe;
 }

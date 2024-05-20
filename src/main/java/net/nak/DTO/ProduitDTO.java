@@ -1,13 +1,17 @@
 package net.nak.DTO;
 
 import lombok.*;
+import net.nak.entities.Annexe;
+import net.nak.entities.AnnulationTAM;
 
+import javax.persistence.CascadeType;
+import javax.persistence.OneToMany;
 import java.util.Date;
-
+import java.util.List;
 
 public class ProduitDTO {
     private Long id;
-    private Float codeproduit;
+    private String codeproduit;
     private String nom;
     private Date date;
 
@@ -19,11 +23,11 @@ public class ProduitDTO {
         this.id = id;
     }
 
-    public Float getCodeproduit() {
+    public String getCodeproduit() {
         return codeproduit;
     }
 
-    public void setCodeproduit(Float codeproduit) {
+    public void setCodeproduit(String codeproduit) {
         this.codeproduit = codeproduit;
     }
 
@@ -42,4 +46,5 @@ public class ProduitDTO {
     public void setDate(Date date) {
         this.date = date;
     }
+
 }
