@@ -17,27 +17,27 @@ import java.util.Date;
 @Table(name="SuiviActionRecouvrementPart")
 public class SuiviActionRecouvrementP extends SuiviActionRecouvrement{
 
-    @Column(name = "id_credit")
+    @Column(name = "num_cin")
     private String numCIN;
 
-    @Column(name = "id_credit")
+    @Column(name = "date_situation")
     private Date dateSituation;
 
-    @Column(name = "id_credit")
+    @Column(name = "code_assignation_pay")
     private CodeAssignationPay codeAssignationPay;
 
-    @Column(name = "id_credit")
+    @Column(name = "ref_assignation_pay")
     private Integer refAssignationPay;
 
-    @Column(name = "id_credit")
+    @Column(name = "code_realisation_hyp")
     private CodeRealisationHypotheque codeRealisationHyp;
 
-    @Column(name = "id_credit")
+    @Column(name = "ref_realisation_hyp")
     private Integer refRealisationHyp;
 
-    @Column(name = "id_credit")
+    @Column(name = "consolidation")
     private Boolean consolidation;
 
-    @Column(name = "id_credit")
+    @Column(name = "date_recouvrement")
     private Date dateRecouvrement;
 }

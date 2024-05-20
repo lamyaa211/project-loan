@@ -10,7 +10,4 @@ import java.util.List;
 @Getter @Setter
 public class ProduitParticulier extends Produit{
 
-
-    @OneToMany(mappedBy = "produitparticulier", cascade = CascadeType.ALL)
-    private List<AnnulationTAM> annulationTAM;
 }

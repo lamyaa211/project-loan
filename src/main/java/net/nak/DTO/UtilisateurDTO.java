@@ -45,6 +45,7 @@ public class UtilisateurDTO {
         this.password = password;
     }
 
+
     public Role getRole() {
         return role;
     }
