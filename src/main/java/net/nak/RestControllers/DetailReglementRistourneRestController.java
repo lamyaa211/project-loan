@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/detailReglementRistourne")
+@RequestMapping("/annexes")
 public class DetailReglementRistourneRestController {
 
 

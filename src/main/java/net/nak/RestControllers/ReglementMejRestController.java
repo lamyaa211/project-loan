@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/reglementMej")
+@RequestMapping("/annexes")
 public class ReglementMejRestController {
 
         @Autowired
@@ -38,7 +38,7 @@ public class ReglementMejRestController {
             return ResponseEntity.ok(reglementMejDTO);
         }
 
-        @GetMapping("/getAllChangementDebiteur")
+        @GetMapping("/getAllReglementMej")
         public ResponseEntity<List<ReglementMejDTO>> getAllReglementMej() {
             List<ReglementMejDTO> reglementMejDTOList = reglementMejService.getAllReglementMej();
             return ResponseEntity.ok(reglementMejDTOList);

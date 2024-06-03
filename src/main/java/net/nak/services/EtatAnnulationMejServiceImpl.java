@@ -18,9 +18,9 @@ public class EtatAnnulationMejServiceImpl implements EtatAnnulationMejService {
     private final ModelMapper modelMapper;
 
     @Autowired
-    public EtatAnnulationMejServiceImpl(EtatAnnulationMejRepository etatAnnulationMejRepository ) {
+    public EtatAnnulationMejServiceImpl(EtatAnnulationMejRepository etatAnnulationMejRepository, ModelMapper modelMapper ) {
         this.etatAnnulationMejRepository = etatAnnulationMejRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     @Override

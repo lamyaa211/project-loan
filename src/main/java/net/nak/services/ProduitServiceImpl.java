@@ -8,8 +8,9 @@ import net.nak.entities.ProduitParticulier;
 import net.nak.repositories.ProduitEntrepriseRepository;
 import net.nak.repositories.ProduitParticulierRepository;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,94 +23,132 @@ public class ProduitServiceImpl implements ProduitService {
 
     private final ModelMapper modelMapper;
 
-    public ProduitServiceImpl(ProduitEntrepriseRepository produitEntrepriseRepository, ProduitParticulierRepository produitParticulierRepository) {
+    @Autowired
+    public ProduitServiceImpl(ProduitEntrepriseRepository produitEntrepriseRepository,
+                              ProduitParticulierRepository produitParticulierRepository,
+                              ModelMapper modelMapper) {
         this.produitEntrepriseRepository = produitEntrepriseRepository;
         this.produitParticulierRepository = produitParticulierRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
+
 
     @Override
     public ProduitEntrepriseDTO ajouterProduitEntreprise(ProduitEntrepriseDTO produitEntrepriseDTO) {
-        ProduitEntreprise produitEntreprise = modelMapper.map(produitEntrepriseDTO, ProduitEntreprise.class);
+        if (produitEntrepriseRepository.existsByCodeProduit(produitEntrepriseDTO.getCodeProduit())) {
+            throw new IllegalStateException("Le codeProduit existe déjà.");
+        }
+
+        ProduitEntreprise produitEntreprise = new ProduitEntreprise();
+        produitEntreprise.setCodeProduit(produitEntrepriseDTO.getCodeProduit());
+        produitEntreprise.setNom(produitEntrepriseDTO.getNom());
+        produitEntreprise.setDate(produitEntrepriseDTO.getDate());
+
         produitEntreprise = produitEntrepriseRepository.save(produitEntreprise);
         return modelMapper.map(produitEntreprise, ProduitEntrepriseDTO.class);
     }
 
     @Override
     public ProduitParticulierDTO ajouterProduitParticulier(ProduitParticulierDTO produitParticulierDTO) {
-        ProduitParticulier produitParticulier = modelMapper.map(produitParticulierDTO, ProduitParticulier.class);
+        if (produitParticulierRepository.existsByCodeProduit(produitParticulierDTO.getCodeProduit())) {
+            throw new IllegalStateException("Le codeProduit existe déjà.");
+        }
+
+        ProduitParticulier produitParticulier = new ProduitParticulier();
+        produitParticulier.setCodeProduit(produitParticulierDTO.getCodeProduit());
+        produitParticulier.setNom(produitParticulierDTO.getNom());
+        produitParticulier.setDate(produitParticulierDTO.getDate());
+
         produitParticulier = produitParticulierRepository.save(produitParticulier);
         return modelMapper.map(produitParticulier, ProduitParticulierDTO.class);
     }
 
     @Override
-    public ProduitEntrepriseDTO modifierProduitEntreprise(Long id, ProduitEntrepriseDTO produitEntrepriseDTO) {
-        Optional<ProduitEntreprise> optionalProduitEntreprise = produitEntrepriseRepository.findById(id);
-        if (optionalProduitEntreprise.isPresent()) {
-            ProduitEntreprise produitEntreprise = optionalProduitEntreprise.get();
-            modelMapper.map(produitEntrepriseDTO, produitEntreprise);
-            produitEntreprise = produitEntrepriseRepository.save(produitEntreprise);
-            return modelMapper.map(produitEntreprise, ProduitEntrepriseDTO.class);
+    public boolean existsProduitParticulierByCodeProduit(Integer codeProduit) {return produitParticulierRepository.existsByCodeProduit(codeProduit);}
+    @Override
+    public boolean existsProduitEntrepriseByCodeProduit(Integer codeProduit) {return produitEntrepriseRepository.existsByCodeProduit(codeProduit);}
+
+    @Override
+    public boolean existsProduitEntrepriseByNom(String nom) {return produitEntrepriseRepository.existsByNom(nom);}
+
+    @Override
+    public boolean existsProduitParticulierByNom(String nom) {return produitParticulierRepository.existsByNom(nom);}
+
+
+        @Override
+        public ProduitEntrepriseDTO modifierProduitEntreprise(Long id, ProduitEntrepriseDTO produitEntrepriseDTO) {
+            Optional<ProduitEntreprise> optionalProduitEntreprise = produitEntrepriseRepository.findById(id);
+            if (optionalProduitEntreprise.isPresent()) {
+                ProduitEntreprise produitEntreprise = optionalProduitEntreprise.get();
+                // Mapping explicite de chaque attribut
+                produitEntreprise.setCodeProduit(produitEntrepriseDTO.getCodeProduit());
+                produitEntreprise.setNom(produitEntrepriseDTO.getNom());
+                produitEntreprise.setDate(produitEntrepriseDTO.getDate());
+
+                produitEntreprise = produitEntrepriseRepository.save(produitEntreprise);
+                return modelMapper.map(produitEntreprise, ProduitEntrepriseDTO.class);
+            }
+            return null;
         }
-        return null;
-    }
 
-    @Override
-    public ProduitParticulierDTO modifierProduitParticulier(Long id, ProduitParticulierDTO produitParticulierDTO) {
-        Optional<ProduitParticulier> optionalProduitParticulier = produitParticulierRepository.findById(id);
-        if (optionalProduitParticulier.isPresent()) {
-            ProduitParticulier produitParticulier = optionalProduitParticulier.get();
-            modelMapper.map(produitParticulierDTO, produitParticulier);
-            produitParticulier = produitParticulierRepository.save(produitParticulier);
-            return modelMapper.map(produitParticulier, ProduitParticulierDTO.class);
+        @Override
+        public ProduitParticulierDTO modifierProduitParticulier(Long id, ProduitParticulierDTO produitParticulierDTO) {
+            Optional<ProduitParticulier> optionalProduitParticulier = produitParticulierRepository.findById(id);
+            if (optionalProduitParticulier.isPresent()) {
+                ProduitParticulier produitParticulier = optionalProduitParticulier.get();
+                // Mapping explicite de chaque attribut
+                produitParticulier.setCodeProduit(produitParticulierDTO.getCodeProduit());
+                produitParticulier.setNom(produitParticulierDTO.getNom());
+                produitParticulier.setDate(produitParticulierDTO.getDate());
+
+                produitParticulier = produitParticulierRepository.save(produitParticulier);
+                return modelMapper.map(produitParticulier, ProduitParticulierDTO.class);
+            }
+            return null;
         }
-        return null;
-    }
+
 
     @Override
-    public void supprimerProduitEntreprise(Long id) {
-        produitEntrepriseRepository.deleteById(id);
-    }
+    public void supprimerProduitEntreprise(Long id) {produitEntrepriseRepository.deleteById(id);}
 
     @Override
-    public void supprimerProduitParticulier(Long id) {
-        produitParticulierRepository.deleteById(id);
-    }
+    public void supprimerProduitParticulier(Long id) {produitParticulierRepository.deleteById(id);}
 
     @Override
     public List<ProduitEntrepriseDTO> getAllProduitsEntreprise() {
-        List<ProduitEntreprise> produitsEntreprise = produitEntrepriseRepository.findAll();
-        return produitsEntreprise.stream().map(produit -> modelMapper.map(produit, ProduitEntrepriseDTO.class)).collect(Collectors.toList());
+        return produitEntrepriseRepository.findAll()
+                .stream()
+                .map(produit -> modelMapper.map(produit, ProduitEntrepriseDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ProduitParticulierDTO> getAllProduitsParticulier() {
-        List<ProduitParticulier> produitsParticulier = produitParticulierRepository.findAll();
-        return produitsParticulier.stream().map(produit -> modelMapper.map(produit, ProduitParticulierDTO.class)).collect(Collectors.toList());
+        return produitParticulierRepository.findAll()
+                .stream()
+                .map(produit -> modelMapper.map(produit, ProduitParticulierDTO.class))
+                .collect(Collectors.toList());
     }
 
     @Override
     public List<ProduitDTO> getAllProduits() {
-        List<ProduitEntrepriseDTO> produitsEntreprise = getAllProduitsEntreprise();
-        List<ProduitParticulierDTO> produitsParticulier = getAllProduitsParticulier();
+        List<ProduitDTO> produits = getAllProduitsEntreprise().stream()
+                .map(dto -> (ProduitDTO) dto)
+                .collect(Collectors.toList());
 
-        List<ProduitDTO> allProduits = new ArrayList<>();
-        allProduits.addAll(produitsEntreprise);
-        allProduits.addAll(produitsParticulier);
-
-        return allProduits;
+        produits.addAll(getAllProduitsParticulier());
+        return produits;
     }
-
 
     @Override
     public Optional<ProduitEntrepriseDTO> getProduitEntrepriseById(Long id) {
-        Optional<ProduitEntreprise> optionalProduitEntreprise = produitEntrepriseRepository.findById(id);
-        return optionalProduitEntreprise.map(produit -> modelMapper.map(produit, ProduitEntrepriseDTO.class));
+        return produitEntrepriseRepository.findById(id)
+                .map(produit -> modelMapper.map(produit, ProduitEntrepriseDTO.class));
     }
 
     @Override
     public Optional<ProduitParticulierDTO> getProduitParticulierById(Long id) {
-        Optional<ProduitParticulier> optionalProduitParticulier = produitParticulierRepository.findById(id);
-        return optionalProduitParticulier.map(produit -> modelMapper.map(produit, ProduitParticulierDTO.class));
+        return produitParticulierRepository.findById(id)
+                .map(produit -> modelMapper.map(produit, ProduitParticulierDTO.class));
     }
 }

@@ -9,36 +9,36 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/SuiviActionRecouvrt")
+@RequestMapping("/annexes")
 public class SuiviActionRecouvrtRestController {
 
     @Autowired
     private SuiviActionRecouvrtService suiviActionRecouvrtService;
 
-    @PostMapping("/add/entreprise")
+    @PostMapping("/addSuiviActionRecouvrtE")
     public SuiviActionRecouvrementEntrpDTO addSuiviActionRecouvrtEntreprise(@RequestBody SuiviActionRecouvrementEntrpDTO suiviActionRecouvrementEntrpDTO) {
         return suiviActionRecouvrtService.addSuiviActionRecouvrtEntreprise(suiviActionRecouvrementEntrpDTO);
     }
 
-    @PostMapping("/add/particulier")
+    @PostMapping("/addSuiviActionRecouvrtP")
     public SuiviActionRecouvrementPartDTO addSuiviActionRecouvrtParticulier(@RequestBody SuiviActionRecouvrementPartDTO suiviActionRecouvrementPartDTO) {
         return suiviActionRecouvrtService.addSuiviActionRecouvrtParticulier(suiviActionRecouvrementPartDTO);
     }
 
-    @PutMapping("/update/entreprise/{id}")
+    @PutMapping("/updateSuiviActionRecouvrtE/{id}")
     public SuiviActionRecouvrementEntrpDTO updateSuiviActionRecouvrtEntreprise(@PathVariable Long id, @RequestBody SuiviActionRecouvrementEntrpDTO suiviActionRecouvrementEntrpDTO) {
         return suiviActionRecouvrtService.updateSuiviActionRecouvrtEntreprise(id, suiviActionRecouvrementEntrpDTO);
     }
 
-    @PutMapping("/update/particulier/{id}")
+    @PutMapping("/updateSuiviActionRecouvrtP/{id}")
     public SuiviActionRecouvrementPartDTO updateSuiviActionRecouvrtParticulier(@PathVariable Long id, @RequestBody SuiviActionRecouvrementPartDTO suiviActionRecouvrementPartDTO) {
         return suiviActionRecouvrtService.updateSuiviActionRecouvrtParticulier(id, suiviActionRecouvrementPartDTO);
     }
 
-    @DeleteMapping("/delete/entreprise/{id}")
+    @DeleteMapping("/deleteSuiviActionRecouvrtE/{id}")
     public void deleteSuiviActionRecouvrtEntreprise(@PathVariable Long id) {suiviActionRecouvrtService.deleteSuiviActionRecouvrtEntreprise(id);}
 
-    @DeleteMapping("/delete/particulier/{id}")
+    @DeleteMapping("/deleteSuiviActionRecouvrtP/{id}")
     public void deleteSuiviActionRecouvrtParticulier(@PathVariable Long id) {suiviActionRecouvrtService.deleteSuiviActionRecouvrtParticulier(id);}
 
     @GetMapping("/getAllSuiviActionRecouvrt")
@@ -46,12 +46,12 @@ public class SuiviActionRecouvrtRestController {
         return suiviActionRecouvrtService.getAllSuiviActionRecouvrt();
     }
 
-    @GetMapping("/getAllSuiviActionRecouvrtEntreprise")
+    @GetMapping("/getAllSuiviActionRecouvrtE")
     public List<SuiviActionRecouvrementEntrpDTO> getAllSuiviActionRecouvrtEntreprise() {
         return suiviActionRecouvrtService.getAllSuiviActionRecouvrtEntreprise();
     }
 
-    @GetMapping("/getAllSuiviActionRecouvrtParticulier")
+    @GetMapping("/getAllSuiviActionRecouvrtP")
     public List<SuiviActionRecouvrementPartDTO> getAllSuiviActionRecouvrtParticulier() {
         return suiviActionRecouvrtService.getAllSuiviActionRecouvrtParticulier();
     }

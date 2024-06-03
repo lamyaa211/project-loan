@@ -1,13 +1,19 @@
 package net.nak.DTO;
 
+import net.nak.entities.ProduitEntreprise;
 import net.nak.entities.SuiviActionRecouvrement;
 import net.nak.enums.TypeAction;
+
+import java.util.List;
 
 public class SuiviActionRecouvrementEntrpDTO extends SuiviActionRecouvrementDTO {
     private TypeAction typeAction;
     private String codeTypeSurete;
     private String idSurete;
-    private String EtatAvancement;
+    private String etatAvancement;
+    private List<ProduitEntreprise> produitEntreprise;
+
+
 
     public TypeAction getTypeAction() {
         return typeAction;
@@ -34,10 +40,18 @@ public class SuiviActionRecouvrementEntrpDTO extends SuiviActionRecouvrementDTO 
     }
 
     public String getEtatAvancement() {
-        return EtatAvancement;
+        return etatAvancement;
     }
 
     public void setEtatAvancement(String etatAvancement) {
-        EtatAvancement = etatAvancement;
+        this.etatAvancement = etatAvancement;
+    }
+
+    public List<ProduitEntreprise> getProduitEntreprise() {
+        return produitEntreprise;
+    }
+
+    public void setProduitEntreprise(List<ProduitEntreprise> produitEntreprise) {
+        this.produitEntreprise = produitEntreprise;
     }
 }

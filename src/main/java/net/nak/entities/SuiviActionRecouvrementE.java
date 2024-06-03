@@ -6,10 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.nak.enums.TypeAction;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
@@ -26,5 +25,8 @@ public class SuiviActionRecouvrementE extends SuiviActionRecouvrement{
     private String idSurete;
 
     @Column(name = "etat_avancement")
-    private String EtatAvancement;
+    private String etatAvancement;
+
+    @OneToMany
+    private List<ProduitEntreprise> produitEntreprise;
 }

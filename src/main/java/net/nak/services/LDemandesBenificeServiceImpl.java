@@ -15,9 +15,10 @@ public class LDemandesBenificeServiceImpl implements LDemandesBenificeService {
     private final LDemandesBenificeRepository listeDemandesBenificeRepository;
     private final ModelMapper modelMapper;
 
-    public LDemandesBenificeServiceImpl(LDemandesBenificeRepository listeDemandesBenificeRepository ) {
+    public LDemandesBenificeServiceImpl(LDemandesBenificeRepository listeDemandesBenificeRepository, ModelMapper modelMapper) {
         this.listeDemandesBenificeRepository = listeDemandesBenificeRepository;
-        this.modelMapper = new ModelMapper();    }
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public ListeDemandesBenificeDTO addlisteDemandesBenifice(ListeDemandesBenificeDTO listeDemandesBenificeDTO) {

@@ -1,13 +1,19 @@
 package net.nak.DTO;
 
 import net.nak.entities.Annexe;
+import net.nak.entities.ProduitEntreprise;
+
 import java.util.Date;
+import java.util.List;
 
 public class ReglementMejDTO extends AnnexeDTO {
     private String idCredit;
     private Double montantMEJ;
     private Date dateReglement;
     private String refReglement;
+    private List<ProduitEntreprise> produitEntreprise;
+
+
 
     public String getIdCredit() {
         return idCredit;
@@ -39,5 +45,13 @@ public class ReglementMejDTO extends AnnexeDTO {
 
     public void setRefReglement(String refReglement) {
         this.refReglement = refReglement;
+    }
+
+    public List<ProduitEntreprise> getProduitEntreprise() {
+        return produitEntreprise;
+    }
+
+    public void setProduitEntreprise(List<ProduitEntreprise> produitEntreprise) {
+        this.produitEntreprise = produitEntreprise;
     }
 }

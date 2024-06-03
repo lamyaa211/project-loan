@@ -7,10 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import net.nak.enums.CodeEvenement;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
@@ -28,5 +27,8 @@ public class EtatEvenementsAvantCredit extends Annexe{
 
     @Column(name = "date_effet")
     private Date dateEffet;
+
+    @OneToMany
+    private List<ProduitParticulier> produitParticulier;
 
 }

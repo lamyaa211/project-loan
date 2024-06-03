@@ -10,6 +10,9 @@ import net.nak.enums.ObjetCredit;
 import net.nak.enums.TypeCredit;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
@@ -68,4 +71,7 @@ public class ListeDemandesBenifice extends Annexe{
 
     @Column(name = "natureTF")
     private NatureTF natureTF;
+
+    @OneToMany
+    private List<ProduitParticulier> produitParticulier;
 }

@@ -1,12 +1,13 @@
 package net.nak.DTO;
 
+import net.nak.entities.ProduitParticulier;
 import net.nak.entities.SuiviActionRecouvrement;
 import net.nak.enums.CodeAssignationPay;
 import net.nak.enums.CodeRealisationHypotheque;
 import java.util.Date;
+import java.util.List;
 
 public class SuiviActionRecouvrementPartDTO extends SuiviActionRecouvrementDTO {
-    private String numCIN;
     private Date dateSituation;
     private CodeAssignationPay codeAssignationPay;
     private Integer refAssignationPay;
@@ -15,15 +16,9 @@ public class SuiviActionRecouvrementPartDTO extends SuiviActionRecouvrementDTO {
     private Boolean consolidation;
     private Date dateRecouvrement;
 
-    @Override
-    public String getNumCIN() {
-        return numCIN;
-    }
+    private List<ProduitParticulier> produitParticulier;
 
-    @Override
-    public void setNumCIN(String numCIN) {
-        this.numCIN = numCIN;
-    }
+
 
     public Date getDateSituation() {
         return dateSituation;
@@ -79,5 +74,13 @@ public class SuiviActionRecouvrementPartDTO extends SuiviActionRecouvrementDTO {
 
     public void setDateRecouvrement(Date dateRecouvrement) {
         this.dateRecouvrement = dateRecouvrement;
+    }
+
+    public List<ProduitParticulier> getProduitParticulier() {
+        return produitParticulier;
+    }
+
+    public void setProduitParticulier(List<ProduitParticulier> produitParticulier) {
+        this.produitParticulier = produitParticulier;
     }
 }

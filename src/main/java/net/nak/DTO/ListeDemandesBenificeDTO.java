@@ -1,10 +1,13 @@
 package net.nak.DTO;
 
 import net.nak.entities.Annexe;
+import net.nak.entities.ProduitParticulier;
 import net.nak.enums.Genre;
 import net.nak.enums.NatureTF;
 import net.nak.enums.ObjetCredit;
 import net.nak.enums.TypeCredit;
+
+import java.util.List;
 
 
 public class ListeDemandesBenificeDTO extends AnnexeDTO {
@@ -27,6 +30,9 @@ public class ListeDemandesBenificeDTO extends AnnexeDTO {
         private Boolean acquisitionIndivision;
         private TypeCredit typeCredit;
         private NatureTF natureTF;
+    private List<ProduitParticulier> produitParticulier;
+
+
 
     public String getNom() {
         return nom;
@@ -170,5 +176,13 @@ public class ListeDemandesBenificeDTO extends AnnexeDTO {
 
     public void setNatureTF(NatureTF natureTF) {
         this.natureTF = natureTF;
+    }
+
+    public List<ProduitParticulier> getProduitParticulier() {
+        return produitParticulier;
+    }
+
+    public void setProduitParticulier(List<ProduitParticulier> produitParticulier) {
+        this.produitParticulier = produitParticulier;
     }
 }

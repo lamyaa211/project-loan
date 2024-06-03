@@ -7,18 +7,14 @@ import lombok.Setter;
 import net.nak.enums.CodeAssignationPay;
 import net.nak.enums.CodeRealisationHypotheque;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
 @Table(name="SuiviActionRecouvrementPart")
 public class SuiviActionRecouvrementP extends SuiviActionRecouvrement{
-
-    @Column(name = "num_cin")
-    private String numCIN;
 
     @Column(name = "date_situation")
     private Date dateSituation;
@@ -40,4 +36,7 @@ public class SuiviActionRecouvrementP extends SuiviActionRecouvrement{
 
     @Column(name = "date_recouvrement")
     private Date dateRecouvrement;
+
+    @OneToMany
+    private List<ProduitParticulier> produitParticulier;
 }

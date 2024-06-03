@@ -19,10 +19,10 @@ public class EtatDeblocageServiceImpl implements EtatDeblocageService {
     private final EtatDeblocageERepository etatDeblocageERepository;
     private final ModelMapper modelMapper;
 
-    public EtatDeblocageServiceImpl(EtatDeblocagePRepository etatDeblocagePRepository, EtatDeblocageERepository etatDeblocageERepository) {
+    public EtatDeblocageServiceImpl(EtatDeblocagePRepository etatDeblocagePRepository, EtatDeblocageERepository etatDeblocageERepository, ModelMapper modelMapper) {
         this.etatDeblocagePRepository = etatDeblocagePRepository;
         this.etatDeblocageERepository = etatDeblocageERepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     @Override

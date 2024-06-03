@@ -9,14 +9,15 @@ import java.util.List;
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter
 @Table(name="Produit")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class Produit {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "produit_id")
     private Long id;
 
     @Column(name = "code_produit")
-    private String codeProduit;
+    private Integer codeProduit;
 
     @Column(name = "nom_produit")
     private String nom;

@@ -8,37 +8,37 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/annexes/listeDemandesBenifice")
+@RequestMapping("/annexes")
 public class LDemandesBenificeRestController {
 
         @Autowired
         private LDemandesBenificeService lDemandesBenificeService;
 
-        @PostMapping("/addlisteDemandesBenifice")
+        @PostMapping("/addListeDemandesBenifice")
         public ResponseEntity<ListeDemandesBenificeDTO> addlisteDemandesBenifice(@RequestBody ListeDemandesBenificeDTO listeDemandesBenificeDTO) {
             ListeDemandesBenificeDTO savedListeDemandesBenificeDTO = lDemandesBenificeService.addlisteDemandesBenifice(listeDemandesBenificeDTO);
             return ResponseEntity.ok(savedListeDemandesBenificeDTO);
         }
 
-        @PutMapping("/updatelisteDemandesBenifice/{id}")
+        @PutMapping("/updateListeDemandesBenifice/{id}")
         public ResponseEntity<ListeDemandesBenificeDTO> updatelisteDemandesBenifice(@PathVariable Long id, @RequestBody ListeDemandesBenificeDTO listeDemandesBenificeDTO) {
             ListeDemandesBenificeDTO updatedListeDemandesBenificeDTO = lDemandesBenificeService.updatelisteDemandesBenifice(id, listeDemandesBenificeDTO);
             return ResponseEntity.ok(updatedListeDemandesBenificeDTO);
         }
 
-        @DeleteMapping("/deletelisteDemandesBenifice/{id}")
+        @DeleteMapping("/deleteListeDemandesBenifice/{id}")
         public ResponseEntity<String> deletelisteDemandesBenifice(@PathVariable Long id) {
             lDemandesBenificeService.deletelisteDemandesBenifice(id);
             return ResponseEntity.ok("Liste Demandes Benifice  deleted successfully");
         }
 
-        @GetMapping("/getlisteDemandesBenificeById/{id}")
+        @GetMapping("/getListeDemandesBenificeById/{id}")
         public ResponseEntity<ListeDemandesBenificeDTO> getlisteDemandesBenificeById(@PathVariable Long id) {
             ListeDemandesBenificeDTO listeDemandesBenificeDTO = lDemandesBenificeService.getlisteDemandesBenificeById(id);
             return ResponseEntity.ok(listeDemandesBenificeDTO);
         }
 
-        @GetMapping("/getAlllisteDemandesBenifice")
+        @GetMapping("/getAllListeDemandesBenifice")
         public ResponseEntity<List<ListeDemandesBenificeDTO>> getAlllisteDemandesBenifice() {
             List<ListeDemandesBenificeDTO> listeDemandesBenificeDTOList = lDemandesBenificeService.getAlllisteDemandesBenifice();
             return ResponseEntity.ok(listeDemandesBenificeDTOList);

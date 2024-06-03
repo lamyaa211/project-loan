@@ -15,9 +15,9 @@ public class ChangementDebiteurServiceImpl implements ChangementDebiteurService 
     private final ChangementDebiteurRepository changementDebiteurRepository;
     private final ModelMapper modelMapper;
 
-    public ChangementDebiteurServiceImpl(ChangementDebiteurRepository changementDebiteurRepository ) {
+    public ChangementDebiteurServiceImpl(ChangementDebiteurRepository changementDebiteurRepository,ModelMapper modelMapper) {
         this.changementDebiteurRepository = changementDebiteurRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     @Override

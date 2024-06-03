@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin
 @RequestMapping("/produits")
 public class ProduitRestController {
 
@@ -27,6 +26,19 @@ public class ProduitRestController {
     public ProduitParticulierDTO addProduitParticulier(@RequestBody ProduitParticulierDTO produitParticulierDTO) {
         return produitService.ajouterProduitParticulier(produitParticulierDTO);
     }
+
+    @GetMapping("/exists/entreprise/{codeProduit}")
+    public boolean existsProduitParticulierByCodeProduit(@PathVariable Integer codeProduit) {return produitService.existsProduitParticulierByCodeProduit(codeProduit);}
+
+    @GetMapping("/exists/particluier/{codeProduit}")
+    public boolean existsProduitEntrepriseByCodeProduit(@PathVariable Integer codeProduit) {return produitService.existsProduitEntrepriseByCodeProduit(codeProduit);}
+
+    @GetMapping("/exists/particluier/nom/{nom}")
+    public boolean existsProduitParticulierByNom(@PathVariable String nom) {return produitService.existsProduitParticulierByNom(nom);}
+
+    @GetMapping("/exists/entreprise/nom/{nom}")
+    public boolean existsProduitEntrepriseByNom(@PathVariable String nom) {return produitService.existsProduitEntrepriseByNom(nom);}
+
 
     @PutMapping("/update/entreprise/{id}")
     public ProduitEntrepriseDTO updateProduitEntreprise(@PathVariable Long id, @RequestBody ProduitEntrepriseDTO produitModifieDTO) {
@@ -59,9 +71,7 @@ public class ProduitRestController {
     }
 
     @GetMapping("/getAllProduitsParticulier")
-    public List<ProduitParticulierDTO> getAllProduitsParticulier() {
-        return produitService.getAllProduitsParticulier();
-    }
+    public List<ProduitParticulierDTO> getAllProduitsParticulier() {return produitService.getAllProduitsParticulier();}
 
     @GetMapping("/getProduitEntrepriseById/{id}")
     public Optional<ProduitEntrepriseDTO> getProduitEntrepriseById(@PathVariable Long id) {

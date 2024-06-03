@@ -1,10 +1,12 @@
 package net.nak.services;
 
+
 import net.nak.DTO.AnnulationTAMDTO;
 import net.nak.entities.AnnulationTAM;
 import net.nak.repositories.AnnulationTAMRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,9 +17,9 @@ public class AnnulationTAMServiceImpl implements AnnulationTAMService {
         private final AnnulationTAMRepository annulationTamRepository;
         private final ModelMapper modelMapper;
 
-    public AnnulationTAMServiceImpl(AnnulationTAMRepository annulationTamRepository ) {
+    public AnnulationTAMServiceImpl(AnnulationTAMRepository annulationTamRepository ,ModelMapper modelMapper) {
         this.annulationTamRepository = annulationTamRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
         @Override

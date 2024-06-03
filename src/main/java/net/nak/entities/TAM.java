@@ -4,10 +4,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
+
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter
 @Setter
@@ -39,9 +40,11 @@ public class TAM extends Annexe {
     private Double interetTTC;
 
     @Column(name = "totalEcheanceTTC")
-    private Double total_echeanceTTC;
+    private Double totalEcheanceTTC;
 
     @Column(name = "ristourneTTC")
     private Double ristourneTTC;
 
+    @OneToMany
+    private List<ProduitEntreprise> produitEntreprise;
 }

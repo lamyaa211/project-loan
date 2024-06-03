@@ -7,18 +7,15 @@ import lombok.*;
 @AllArgsConstructor @NoArgsConstructor
 @Getter @Setter
 @Table(name="Annexe")
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Annexe {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "annexe_id")
     private Long id;
 
     @Column(name = "code_bq")
     private String codeBq;
-
-    @ManyToOne
-    @JoinColumn(name = "code_produit")
-    private Produit produit;
 
     @Column(name = "nbre_ligne")
     private String nbreLigne;

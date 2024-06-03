@@ -17,9 +17,9 @@ public class DReglementRistourneServiceImpl implements DReglementRistourneServic
     private final ModelMapper modelMapper;
 
     @Autowired
-    public DReglementRistourneServiceImpl(DReglementRistourneRepository detailReglementRistourneRepository ) {
+    public DReglementRistourneServiceImpl(DReglementRistourneRepository detailReglementRistourneRepository, ModelMapper modelMapper ) {
         this.detailReglementRistourneRepository = detailReglementRistourneRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     @Override

@@ -14,9 +14,9 @@ public class EtatEvenementsACServiceImpl implements EtatEvenementsACService {
     private final EtatEvenementsAvantCreditRepository etatEvenementsACRepository;
     private final ModelMapper modelMapper;
 
-    public EtatEvenementsACServiceImpl(EtatEvenementsAvantCreditRepository etatEvenementsACRepository ) {
+    public EtatEvenementsACServiceImpl(EtatEvenementsAvantCreditRepository etatEvenementsACRepository,ModelMapper modelMapper ) {
         this.etatEvenementsACRepository = etatEvenementsACRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     @Override

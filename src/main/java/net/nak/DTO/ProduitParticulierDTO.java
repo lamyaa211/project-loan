@@ -1,20 +1,16 @@
 package net.nak.DTO;
 
-import lombok.Getter;
-import lombok.Setter;
-import net.nak.entities.AnnulationTAM;
+import lombok.Data;
+import net.nak.entities.*;
 
-import java.util.List;
-
+@Data
 public class ProduitParticulierDTO  extends ProduitDTO{
 
-    private List<AnnulationTAM> annulationTAM;
+    private AnnulationTAM annulationTAM;
+    private ChangementDebiteur changementDebiteur;
+    private EtatDeblocageP etatDeblocageP;
+    private SuiviActionRecouvrementP suiviActionRecouvrementP;
+    private EtatEvenementsAvantCredit etatEvenementsAvantCredit;
+    private ListeDemandesBenifice listeDemandesBenifice;
 
-    public List<AnnulationTAM> getAnnulationTAM() {
-        return annulationTAM;
-    }
-
-    public void setAnnulationTAM(List<AnnulationTAM> annulationTAM) {
-        this.annulationTAM = annulationTAM;
-    }
 }

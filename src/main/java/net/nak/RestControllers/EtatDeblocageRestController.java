@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/EtatDeblocage")
+@RequestMapping("/annexes")
 public class EtatDeblocageRestController {
 
     @Autowired

@@ -1,14 +1,19 @@
 package net.nak.DTO;
 
 import net.nak.entities.Annexe;
+import net.nak.entities.ProduitParticulier;
 import net.nak.enums.CodeEvenement;
 import java.util.Date;
+import java.util.List;
 
 public class EtatEvenementsAvantCreditDTO extends AnnexeDTO {
     private String numCIN;
     private String numCredit;
     private CodeEvenement codeEvenement;
     private Date dateEffet;
+    private List<ProduitParticulier> produitParticulier;
+
+
 
     public String getNumCIN() {
         return numCIN;
@@ -40,5 +45,13 @@ public class EtatEvenementsAvantCreditDTO extends AnnexeDTO {
 
     public void setDateEffet(Date dateEffet) {
         this.dateEffet = dateEffet;
+    }
+
+    public List<ProduitParticulier> getProduitParticulier() {
+        return produitParticulier;
+    }
+
+    public void setProduitParticulier(List<ProduitParticulier> produitParticulier) {
+        this.produitParticulier = produitParticulier;
     }
 }

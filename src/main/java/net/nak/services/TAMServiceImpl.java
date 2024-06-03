@@ -14,9 +14,10 @@ public class TAMServiceImpl implements TAMService {
     private final TAMRepository tamRepository;
     private final ModelMapper modelMapper;
 
-    public TAMServiceImpl(TAMRepository tamRepository ) {
+    public TAMServiceImpl(TAMRepository tamRepository, ModelMapper modelMapper ) {
         this.tamRepository = tamRepository;
-        this.modelMapper = new ModelMapper();    }
+        this.modelMapper = modelMapper;
+    }
 
     @Override
     public TAMDTO addTAM(TAMDTO tamDTO) {

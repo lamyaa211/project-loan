@@ -1,9 +1,9 @@
 package net.nak.entities;
 
 import lombok.*;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor
@@ -16,4 +16,9 @@ public class AnnulationTAM extends Annexe{
 
     @Column(name = "num_credit")
     private String numCredit;
+
+    @OneToMany
+    private List<ProduitParticulier> produitParticulier;
+
+
 }

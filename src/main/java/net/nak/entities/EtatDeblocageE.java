@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor @NoArgsConstructor @Getter @Setter
@@ -15,5 +15,8 @@ public class EtatDeblocageE extends EtatDeblocageCredit{
 
     @Column(name = "dernier_deblocage")
     private Double dernierDebl;
+
+    @OneToMany
+    private List<ProduitEntreprise> produitEntreprise;
 
 }

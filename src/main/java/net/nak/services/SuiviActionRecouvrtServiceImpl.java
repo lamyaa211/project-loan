@@ -21,10 +21,10 @@ public class SuiviActionRecouvrtServiceImpl implements SuiviActionRecouvrtServic
     private final SuiviActionRecouvrementPartRepository suiviActionRecouvrementPartRepository;
     private final ModelMapper modelMapper;
 
-    public SuiviActionRecouvrtServiceImpl(SuiviActionRecouvrementEntrpRepository suiviActionRecouvrementEntrpRepository, SuiviActionRecouvrementPartRepository suiviActionRecouvrementPartRepository ) {
+    public SuiviActionRecouvrtServiceImpl(SuiviActionRecouvrementEntrpRepository suiviActionRecouvrementEntrpRepository, SuiviActionRecouvrementPartRepository suiviActionRecouvrementPartRepository , ModelMapper modelMapper) {
         this.suiviActionRecouvrementEntrpRepository = suiviActionRecouvrementEntrpRepository;
         this.suiviActionRecouvrementPartRepository = suiviActionRecouvrementPartRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
 

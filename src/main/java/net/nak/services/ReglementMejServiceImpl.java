@@ -15,9 +15,9 @@ public class ReglementMejServiceImpl implements ReglementMejService {
     private final ReglementMejRepository reglementMejRepository;
     private final ModelMapper modelMapper;
 
-    public ReglementMejServiceImpl(ReglementMejRepository reglementMejRepository) {
+    public ReglementMejServiceImpl(ReglementMejRepository reglementMejRepository, ModelMapper modelMapper) {
         this.reglementMejRepository = reglementMejRepository;
-        this.modelMapper = new ModelMapper();
+        this.modelMapper = modelMapper;
     }
 
     @Override

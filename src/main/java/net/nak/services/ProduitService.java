@@ -30,4 +30,13 @@ public interface ProduitService {
     Optional<ProduitEntrepriseDTO> getProduitEntrepriseById(Long id);
 
     Optional<ProduitParticulierDTO> getProduitParticulierById(Long id);
+
+    boolean existsProduitParticulierByCodeProduit(Integer codeProduit);
+    boolean existsProduitEntrepriseByCodeProduit(Integer codeProduit);
+
+
+    boolean existsProduitParticulierByNom(String nom);
+    boolean existsProduitEntrepriseByNom(String nom);
+
+
 }
