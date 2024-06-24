@@ -6,6 +6,8 @@ import javax.persistence.*;
 public class AnnexeDTO {
 
         private Long id;
+        private String libelle;
+        private String type;
         private String codeBq;
         private String nbreLigne;
         private String numeroAnnexe;
@@ -40,6 +42,18 @@ public class AnnexeDTO {
 
     public void setNumeroAnnexe(String numeroAnnexe) {
         this.numeroAnnexe = numeroAnnexe;
+    }
+
+    public String getType() {return type;}
+
+    public void setType(String type) {this.type = type;}
+
+    public String getLibelle() {
+        return libelle;
+    }
+
+    public void setLibelle(String libelle) {
+        this.libelle = libelle;
     }
 }
 

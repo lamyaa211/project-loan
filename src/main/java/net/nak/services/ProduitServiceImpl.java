@@ -40,13 +40,14 @@ public class ProduitServiceImpl implements ProduitService {
         }
 
         ProduitEntreprise produitEntreprise = new ProduitEntreprise();
-        produitEntreprise.setCodeProduit(produitEntrepriseDTO.getCodeProduit());
+        produitEntreprise.setCodeProduit(produitEntrepriseDTO.getCodeProduit()); // Assurez-vous que produitEntrepriseDTO.getCodeProduit() retourne un String
         produitEntreprise.setNom(produitEntrepriseDTO.getNom());
         produitEntreprise.setDate(produitEntrepriseDTO.getDate());
 
         produitEntreprise = produitEntrepriseRepository.save(produitEntreprise);
         return modelMapper.map(produitEntreprise, ProduitEntrepriseDTO.class);
     }
+
 
     @Override
     public ProduitParticulierDTO ajouterProduitParticulier(ProduitParticulierDTO produitParticulierDTO) {
@@ -55,7 +56,7 @@ public class ProduitServiceImpl implements ProduitService {
         }
 
         ProduitParticulier produitParticulier = new ProduitParticulier();
-        produitParticulier.setCodeProduit(produitParticulierDTO.getCodeProduit());
+        produitParticulier.setCodeProduit(produitParticulierDTO.getCodeProduit()); // Assurez-vous que produitParticulierDTO.getCodeProduit() retourne un String
         produitParticulier.setNom(produitParticulierDTO.getNom());
         produitParticulier.setDate(produitParticulierDTO.getDate());
 
@@ -63,10 +64,11 @@ public class ProduitServiceImpl implements ProduitService {
         return modelMapper.map(produitParticulier, ProduitParticulierDTO.class);
     }
 
+
     @Override
-    public boolean existsProduitParticulierByCodeProduit(Integer codeProduit) {return produitParticulierRepository.existsByCodeProduit(codeProduit);}
+    public boolean existsProduitParticulierByCodeProduit(String codeProduit) {return produitParticulierRepository.existsByCodeProduit(codeProduit);}
     @Override
-    public boolean existsProduitEntrepriseByCodeProduit(Integer codeProduit) {return produitEntrepriseRepository.existsByCodeProduit(codeProduit);}
+    public boolean existsProduitEntrepriseByCodeProduit(String codeProduit) {return produitEntrepriseRepository.existsByCodeProduit(codeProduit);}
 
     @Override
     public boolean existsProduitEntrepriseByNom(String nom) {return produitEntrepriseRepository.existsByNom(nom);}

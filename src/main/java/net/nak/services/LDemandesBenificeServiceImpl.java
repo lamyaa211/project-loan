@@ -1,6 +1,6 @@
 package net.nak.services;
 
-import net.nak.DTO.ListeDemandesBenificeDTO;
+import net.nak.DTO.ListeDemandesBeneficeDTO;
 import net.nak.entities.ListeDemandesBenifice;
 import net.nak.repositories.LDemandesBenificeRepository;
 import org.modelmapper.ModelMapper;
@@ -21,19 +21,19 @@ public class LDemandesBenificeServiceImpl implements LDemandesBenificeService {
     }
 
     @Override
-    public ListeDemandesBenificeDTO addlisteDemandesBenifice(ListeDemandesBenificeDTO listeDemandesBenificeDTO) {
+    public ListeDemandesBeneficeDTO addlisteDemandesBenifice(ListeDemandesBeneficeDTO listeDemandesBenificeDTO) {
         ListeDemandesBenifice listeDemandesBenifice = modelMapper.map(listeDemandesBenificeDTO, ListeDemandesBenifice.class);
         ListeDemandesBenifice savedListeDemandesBenifice = listeDemandesBenificeRepository.save(listeDemandesBenifice);
-        return modelMapper.map(savedListeDemandesBenifice, ListeDemandesBenificeDTO.class);
+        return modelMapper.map(savedListeDemandesBenifice, ListeDemandesBeneficeDTO.class);
     }
 
     @Override
-    public ListeDemandesBenificeDTO updatelisteDemandesBenifice(Long id, ListeDemandesBenificeDTO listeDemandesBenificeDTO) {
+    public ListeDemandesBeneficeDTO updatelisteDemandesBenifice(Long id, ListeDemandesBeneficeDTO listeDemandesBenificeDTO) {
         ListeDemandesBenifice existingListeDemandesBenifice = listeDemandesBenificeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Liste Demandes Benifice not found with id: " + id));
         modelMapper.map(listeDemandesBenificeDTO, existingListeDemandesBenifice);
         ListeDemandesBenifice updatedListeDemandesBenifice = listeDemandesBenificeRepository.save(existingListeDemandesBenifice);
-        return modelMapper.map(updatedListeDemandesBenifice, ListeDemandesBenificeDTO.class);
+        return modelMapper.map(updatedListeDemandesBenifice, ListeDemandesBeneficeDTO.class);
     }
 
     @Override
@@ -42,17 +42,17 @@ public class LDemandesBenificeServiceImpl implements LDemandesBenificeService {
     }
 
     @Override
-    public ListeDemandesBenificeDTO getlisteDemandesBenificeById(Long id) {
+    public ListeDemandesBeneficeDTO getlisteDemandesBenificeById(Long id) {
         ListeDemandesBenifice listeDemandesBenifice = listeDemandesBenificeRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Liste Demandes Benifice not found with id: " + id));
-        return modelMapper.map(listeDemandesBenifice, ListeDemandesBenificeDTO.class);
+        return modelMapper.map(listeDemandesBenifice, ListeDemandesBeneficeDTO.class);
     }
 
     @Override
-    public List<ListeDemandesBenificeDTO> getAlllisteDemandesBenifice() {
+    public List<ListeDemandesBeneficeDTO> getAlllisteDemandesBenifice() {
         List<ListeDemandesBenifice> allListeDemandesBenifice = listeDemandesBenificeRepository.findAll();
         return allListeDemandesBenifice.stream()
-                .map(listeDemandesBenifice -> modelMapper.map(listeDemandesBenifice, ListeDemandesBenificeDTO.class))
+                .map(listeDemandesBenifice -> modelMapper.map(listeDemandesBenifice, ListeDemandesBeneficeDTO.class))
                 .collect(Collectors.toList());
     }
 }

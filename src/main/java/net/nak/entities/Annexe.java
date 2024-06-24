@@ -14,6 +14,12 @@ public class Annexe {
     @Column(name = "annexe_id")
     private Long id;
 
+    @Column(name = "libelle")
+    private String libelle;
+
+    @Column(name = "type")
+    private String type;
+
     @Column(name = "code_bq")
     private String codeBq;
 
@@ -22,4 +28,5 @@ public class Annexe {
 
     @Column(name = "numero_annexe")
     private String numeroAnnexe;
+
 }

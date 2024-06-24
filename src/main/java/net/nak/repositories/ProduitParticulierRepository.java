@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProduitParticulierRepository  extends JpaRepository<ProduitParticulier,Long> {
 
-    boolean existsByCodeProduit(Integer codeProduit);
+    boolean existsByCodeProduit(String codeProduit);
 
     boolean existsByNom(String nom);
 

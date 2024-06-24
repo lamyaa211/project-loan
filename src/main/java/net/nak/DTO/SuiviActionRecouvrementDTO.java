@@ -1,6 +1,5 @@
 package net.nak.DTO;
 
-import net.nak.entities.Annexe;
 
 public class SuiviActionRecouvrementDTO extends AnnexeDTO {
 

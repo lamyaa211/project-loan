@@ -1,6 +1,5 @@
 package net.nak.DTO;
 
-import net.nak.entities.Annexe;
 import net.nak.entities.ProduitParticulier;
 import net.nak.enums.Genre;
 import net.nak.enums.NatureTF;
@@ -10,7 +9,7 @@ import net.nak.enums.TypeCredit;
 import java.util.List;
 
 
-public class ListeDemandesBenificeDTO extends AnnexeDTO {
+public class ListeDemandesBeneficeDTO extends AnnexeDTO {
 
         private String nom;
         private String prenom;

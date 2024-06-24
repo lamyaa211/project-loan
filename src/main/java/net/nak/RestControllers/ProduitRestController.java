@@ -28,10 +28,10 @@ public class ProduitRestController {
     }
 
     @GetMapping("/exists/entreprise/{codeProduit}")
-    public boolean existsProduitParticulierByCodeProduit(@PathVariable Integer codeProduit) {return produitService.existsProduitParticulierByCodeProduit(codeProduit);}
+    public boolean existsProduitParticulierByCodeProduit(@PathVariable String codeProduit) {return produitService.existsProduitParticulierByCodeProduit(codeProduit);}
 
     @GetMapping("/exists/particluier/{codeProduit}")
-    public boolean existsProduitEntrepriseByCodeProduit(@PathVariable Integer codeProduit) {return produitService.existsProduitEntrepriseByCodeProduit(codeProduit);}
+    public boolean existsProduitEntrepriseByCodeProduit(@PathVariable String codeProduit) {return produitService.existsProduitEntrepriseByCodeProduit(codeProduit);}
 
     @GetMapping("/exists/particluier/nom/{nom}")
     public boolean existsProduitParticulierByNom(@PathVariable String nom) {return produitService.existsProduitParticulierByNom(nom);}

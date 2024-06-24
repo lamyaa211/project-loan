@@ -30,5 +30,8 @@ public class ProduitParticulier extends Produit{
     @ManyToOne
     private SuiviActionRecouvrementP suiviActionRecouvrementP;
 
+    @ManyToOne
+    private DemandeIndemnisationP demandeIndemnisationP;
+
 
 }

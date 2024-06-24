@@ -17,7 +17,7 @@ public abstract class Produit {
     private Long id;
 
     @Column(name = "code_produit")
-    private Integer codeProduit;
+    private String codeProduit;
 
     @Column(name = "nom_produit")
     private String nom;

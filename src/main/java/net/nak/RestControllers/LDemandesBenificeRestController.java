@@ -1,6 +1,6 @@
 package net.nak.RestControllers;
 
-import net.nak.DTO.ListeDemandesBenificeDTO;
+import net.nak.DTO.ListeDemandesBeneficeDTO;
 import net.nak.services.LDemandesBenificeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +15,14 @@ public class LDemandesBenificeRestController {
         private LDemandesBenificeService lDemandesBenificeService;
 
         @PostMapping("/addListeDemandesBenifice")
-        public ResponseEntity<ListeDemandesBenificeDTO> addlisteDemandesBenifice(@RequestBody ListeDemandesBenificeDTO listeDemandesBenificeDTO) {
-            ListeDemandesBenificeDTO savedListeDemandesBenificeDTO = lDemandesBenificeService.addlisteDemandesBenifice(listeDemandesBenificeDTO);
+        public ResponseEntity<ListeDemandesBeneficeDTO> addlisteDemandesBenifice(@RequestBody ListeDemandesBeneficeDTO listeDemandesBenificeDTO) {
+            ListeDemandesBeneficeDTO savedListeDemandesBenificeDTO = lDemandesBenificeService.addlisteDemandesBenifice(listeDemandesBenificeDTO);
             return ResponseEntity.ok(savedListeDemandesBenificeDTO);
         }
 
         @PutMapping("/updateListeDemandesBenifice/{id}")
-        public ResponseEntity<ListeDemandesBenificeDTO> updatelisteDemandesBenifice(@PathVariable Long id, @RequestBody ListeDemandesBenificeDTO listeDemandesBenificeDTO) {
-            ListeDemandesBenificeDTO updatedListeDemandesBenificeDTO = lDemandesBenificeService.updatelisteDemandesBenifice(id, listeDemandesBenificeDTO);
+        public ResponseEntity<ListeDemandesBeneficeDTO> updatelisteDemandesBenifice(@PathVariable Long id, @RequestBody ListeDemandesBeneficeDTO listeDemandesBenificeDTO) {
+            ListeDemandesBeneficeDTO updatedListeDemandesBenificeDTO = lDemandesBenificeService.updatelisteDemandesBenifice(id, listeDemandesBenificeDTO);
             return ResponseEntity.ok(updatedListeDemandesBenificeDTO);
         }
 
@@ -33,14 +33,14 @@ public class LDemandesBenificeRestController {
         }
 
         @GetMapping("/getListeDemandesBenificeById/{id}")
-        public ResponseEntity<ListeDemandesBenificeDTO> getlisteDemandesBenificeById(@PathVariable Long id) {
-            ListeDemandesBenificeDTO listeDemandesBenificeDTO = lDemandesBenificeService.getlisteDemandesBenificeById(id);
+        public ResponseEntity<ListeDemandesBeneficeDTO> getlisteDemandesBenificeById(@PathVariable Long id) {
+            ListeDemandesBeneficeDTO listeDemandesBenificeDTO = lDemandesBenificeService.getlisteDemandesBenificeById(id);
             return ResponseEntity.ok(listeDemandesBenificeDTO);
         }
 
         @GetMapping("/getAllListeDemandesBenifice")
-        public ResponseEntity<List<ListeDemandesBenificeDTO>> getAlllisteDemandesBenifice() {
-            List<ListeDemandesBenificeDTO> listeDemandesBenificeDTOList = lDemandesBenificeService.getAlllisteDemandesBenifice();
+        public ResponseEntity<List<ListeDemandesBeneficeDTO>> getAlllisteDemandesBenifice() {
+            List<ListeDemandesBeneficeDTO> listeDemandesBenificeDTOList = lDemandesBenificeService.getAlllisteDemandesBenifice();
             return ResponseEntity.ok(listeDemandesBenificeDTOList);
         }
 

@@ -30,5 +30,6 @@ public class ProduitEntreprise extends Produit {
     @ManyToOne
     private ReglementMEJ reglementMEJ;
 
-
+    @ManyToOne
+    private DemandeIndemnisationE demandeIndemnisationE;
 }
