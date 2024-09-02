@@ -20,7 +20,10 @@ public class EtatAnnulationMEJ extends Annexe{
     @Column(name = "code_motif")
     private CodeMotif codeMotif;
 
-    @OneToMany
+    @Column(name = "isActive")
+    private Boolean isActive = true;
+
+    @OneToMany(mappedBy = "etatAnnulationMEJ", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProduitEntreprise> produitEntreprise;
 
 }

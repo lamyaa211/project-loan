@@ -16,7 +16,7 @@ import java.util.List;
 public class ChangementDebiteur extends Annexe{
 
     @Column(name = "num_credit")
-    private String numcredit;
+    private String numCredit;
 
     @Column(name = "num_cin")
     private String numCIN;
@@ -30,7 +30,11 @@ public class ChangementDebiteur extends Annexe{
     @Column(name = "date_effet_transfert")
     private Date dateEffetTransfert;
 
-    @OneToMany
+    @Column(name = "isActive")
+    private Boolean isActive = true;
+
+
+    @OneToMany(mappedBy = "changementDebiteur", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProduitParticulier> produitParticulier;
 
 }

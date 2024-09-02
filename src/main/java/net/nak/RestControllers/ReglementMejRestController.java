@@ -26,12 +26,6 @@ public class ReglementMejRestController {
             return ResponseEntity.ok(updatedReglementMejDTO);
         }
 
-        @DeleteMapping("/deleteReglementMej/{id}")
-        public ResponseEntity<String> deleteReglementMej(@PathVariable Long id) {
-            reglementMejService.deleteReglementMej(id);
-            return ResponseEntity.ok("Reglement Mej deleted successfully");
-        }
-
         @GetMapping("/getReglementMejById/{id}")
         public ResponseEntity<ReglementMejDTO> getReglementMejById(@PathVariable Long id) {
             ReglementMejDTO reglementMejDTO = reglementMejService.getReglementMejById(id);
@@ -44,5 +38,10 @@ public class ReglementMejRestController {
             return ResponseEntity.ok(reglementMejDTOList);
         }
 
+    @PutMapping("/{id}/deactivateReglementMej")
+    public ResponseEntity<Void> deactivateReglementMej(@PathVariable Long id) {
+        reglementMejService.deactivateReglementMej(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

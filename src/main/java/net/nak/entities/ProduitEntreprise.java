@@ -12,24 +12,29 @@ import java.util.List;
 @Table(name="ProduitEntreprise")
 public class ProduitEntreprise extends Produit {
 
-    @ManyToOne
-    private TAM tam;
 
     @ManyToOne
-    private EtatDeblocageE etatDeblocageE;
-
-    @ManyToOne
+    @JoinColumn(name = "detailReglementRistourne_id")  // the foreign key column
     private DetailReglementRistourne detailReglementRistourne;
 
     @ManyToOne
-    private SuiviActionRecouvrementE suiviActionRecouvrementE;
-
-    @ManyToOne
+    @JoinColumn(name = "etatAnnulationMEJ_id")  // the foreign key column
     private EtatAnnulationMEJ etatAnnulationMEJ;
 
     @ManyToOne
+    @JoinColumn(name = "reglementMEJ_id")  // the foreign key column
     private ReglementMEJ reglementMEJ;
 
     @ManyToOne
-    private DemandeIndemnisationE demandeIndemnisationE;
+    @JoinColumn(name = "etatRecouvrementRealise_id")  // the foreign key column
+    private EtatRecouvrementRealise etatRecouvrementRealise;
+
+
+    @ManyToOne
+    @JoinColumn(name = "restitutionMEJ_id")  // the foreign key column
+    private RestitutionMEJ restitutionMEJ;
+
+    @Column(name = "isActive")
+    private Boolean isActive = true;
+
 }

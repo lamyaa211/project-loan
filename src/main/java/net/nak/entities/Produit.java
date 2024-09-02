@@ -25,4 +25,7 @@ public abstract class Produit {
     @Column(name = "date_creation")
     private Date date;
 
+    @Column(name = "description")
+    private String description;
+
 }

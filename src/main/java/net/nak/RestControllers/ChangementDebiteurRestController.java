@@ -5,42 +5,41 @@ import net.nak.services.ChangementDebiteurService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/annexes")
 public class ChangementDebiteurRestController {
 
-        @Autowired
-        private ChangementDebiteurService changementDebiteurService;
+    @Autowired
+    private ChangementDebiteurService changementDebiteurService;
 
-        @PostMapping("/addChangementDebiteur")
-        public ResponseEntity<ChangementDebiteurDTO> addChangementDebiteur(@RequestBody ChangementDebiteurDTO changementDebiteurDTO) {
-            ChangementDebiteurDTO savedChangementDebiteurDTO = changementDebiteurService.addChangementDebiteur(changementDebiteurDTO);
-            return ResponseEntity.ok(savedChangementDebiteurDTO);
-        }
+    @PostMapping("/addChangementDebiteur")
+    public ChangementDebiteurDTO addChangementDebiteur(@RequestBody ChangementDebiteurDTO changementDebiteurDTO) {
+        return changementDebiteurService.addChangementDebiteur(changementDebiteurDTO);
+    }
 
-        @PutMapping("/updateChangementDebiteur/{id}")
-        public ResponseEntity<ChangementDebiteurDTO> updateChangementDebiteur(@PathVariable Long id, @RequestBody ChangementDebiteurDTO changementDebiteurDTO) {
-            ChangementDebiteurDTO updatedChangementDebiteurDTO = changementDebiteurService.updateChangementDebiteur(id, changementDebiteurDTO);
-            return ResponseEntity.ok(updatedChangementDebiteurDTO);
-        }
+    @PutMapping("/updateChangementDebiteur/{id}")
+    public ChangementDebiteurDTO updateChangementDebiteur(@PathVariable Long id, @RequestBody ChangementDebiteurDTO changementDebiteurDTO) {
+        return changementDebiteurService.updateChangementDebiteur(id, changementDebiteurDTO);
+    }
 
-        @DeleteMapping("/deleteChangementDebiteur/{id}")
-        public ResponseEntity<String> deleteChangementDebiteur(@PathVariable Long id) {
-            changementDebiteurService.deleteChangementDebiteur(id);
-            return ResponseEntity.ok("Changement Debiteur deleted successfully");
-        }
+    @GetMapping("/getChangementDebiteurById/{id}")
+    public Optional<ChangementDebiteurDTO> getChangementDebiteurById(@PathVariable Long id) {
+        return changementDebiteurService.getChangementDebiteurById(id);
+    }
 
-        @GetMapping("/getChangementDebiteurById/{id}")
-        public ResponseEntity<ChangementDebiteurDTO> getChangementDebiteurById(@PathVariable Long id) {
-            ChangementDebiteurDTO changementDebiteurDTO = changementDebiteurService.getChangementDebiteurById(id);
-            return ResponseEntity.ok(changementDebiteurDTO);
-        }
+    @GetMapping("/getAllChangementDebiteur")
+    public List<ChangementDebiteurDTO> getAllChangementDebiteur() {
+        return changementDebiteurService.getAllChangementDebiteur();
+    }
 
-        @GetMapping("/getAllChangementDebiteur")
-        public ResponseEntity<List<ChangementDebiteurDTO>> getAllChangementDebiteur() {
-            List<ChangementDebiteurDTO> changementDebiteurDTOList = changementDebiteurService.getAllChangementDebiteur();
-            return ResponseEntity.ok(changementDebiteurDTOList);
-        }
+    @PutMapping("/{id}/deactivateChangementDebiteur")
+    public ResponseEntity<Void> deactivateChangementDebiteur(@PathVariable Long id) {
+        changementDebiteurService.deactivateChangementDebiteur(id);
+        return ResponseEntity.ok().build();
+    }
+
 }

@@ -26,6 +26,10 @@ public class ReglementMEJ extends Annexe{
     @Column(name = "ref_reglement")
     private String refReglement;
 
-    @OneToMany
+    @Column(name = "isActive")
+    private Boolean isActive = true;
+
+
+    @OneToMany(mappedBy = "reglementMEJ", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProduitEntreprise> produitEntreprise;
 }

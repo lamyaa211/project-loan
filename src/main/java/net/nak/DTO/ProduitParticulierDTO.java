@@ -2,40 +2,25 @@ package net.nak.DTO;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import net.nak.entities.*;
 
 
 @Getter
+@Setter
 public class ProduitParticulierDTO  extends ProduitDTO{
 
-    private AnnulationTAM annulationTAM;
     private ChangementDebiteur changementDebiteur;
-    private EtatDeblocageP etatDeblocageP;
-    private SuiviActionRecouvrementP suiviActionRecouvrementP;
-    private EtatEvenementsAvantCredit etatEvenementsAvantCredit;
-    private ListeDemandesBenifice listeDemandesBenifice;
 
-    public void setAnnulationTAM(AnnulationTAM annulationTAM) {
-        this.annulationTAM = annulationTAM;
-    }
+    private DemandeGarantieFOG demandeGarantieFOG;
 
-    public void setChangementDebiteur(ChangementDebiteur changementDebiteur) {
-        this.changementDebiteur = changementDebiteur;
-    }
+    private DemandeMEJGarantie demandeMEJGarantie;
 
-    public void setEtatDeblocageP(EtatDeblocageP etatDeblocageP) {
-        this.etatDeblocageP = etatDeblocageP;
-    }
+    private EtatImpayes etatImpayes;
 
-    public void setSuiviActionRecouvrementP(SuiviActionRecouvrementP suiviActionRecouvrementP) {
-        this.suiviActionRecouvrementP = suiviActionRecouvrementP;
-    }
+    private EtatReglementPrime  etatReglementPrime;
 
-    public void setEtatEvenementsAvantCredit(EtatEvenementsAvantCredit etatEvenementsAvantCredit) {
-        this.etatEvenementsAvantCredit = etatEvenementsAvantCredit;
-    }
+    private Boolean isActive = true;
 
-    public void setListeDemandesBenifice(ListeDemandesBenifice listeDemandesBenifice) {
-        this.listeDemandesBenifice = listeDemandesBenifice;
-    }
+
 }

@@ -1,11 +1,17 @@
 package net.nak.services;
 
+import net.nak.DTO.DemandeMEJGarantieDTO;
 import net.nak.DTO.DetailReglementRistourneDTO;
+import net.nak.entities.ChangementDebiteur;
+import net.nak.entities.DemandeMEJGarantie;
 import net.nak.entities.DetailReglementRistourne;
 import net.nak.repositories.DReglementRistourneRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,28 +28,36 @@ public class DReglementRistourneServiceImpl implements DReglementRistourneServic
         this.modelMapper = modelMapper;
     }
 
+
     @Override
     public DetailReglementRistourneDTO addDetailReglementRistourne(DetailReglementRistourneDTO detailReglementRistourneDTO) {
-        DetailReglementRistourne detailReglementRistourne = modelMapper.map(detailReglementRistourneDTO, DetailReglementRistourne.class);
+        DetailReglementRistourne detailReglementRistourne = new DetailReglementRistourne();
+        detailReglementRistourne.setIdCredit(detailReglementRistourneDTO.getIdCredit());
+        detailReglementRistourne.setDateEcheance(detailReglementRistourneDTO.getDateEcheance());
+        detailReglementRistourne.setMontantRistoune(detailReglementRistourneDTO.getMontantRistoune());
+        detailReglementRistourne.setDateReglement(detailReglementRistourneDTO.getDateReglement());
+        detailReglementRistourne.setRefReglement(detailReglementRistourneDTO.getRefReglement());
+
         detailReglementRistourne = detailReglementRistourneRepository.save(detailReglementRistourne);
         return modelMapper.map(detailReglementRistourne, DetailReglementRistourneDTO.class);
     }
 
-    @Override
-    public DetailReglementRistourneDTO updateDetailReglementRistourne(Long id, DetailReglementRistourneDTO detailReglementRistourneDTO) {
-        Optional<DetailReglementRistourne> existingDetailReglementRistourneOpt = detailReglementRistourneRepository.findById(id);
-        if (existingDetailReglementRistourneOpt.isPresent()) {
-            DetailReglementRistourne existingDetailReglementRistourne = existingDetailReglementRistourneOpt.get();
-            modelMapper.map(detailReglementRistourneDTO, existingDetailReglementRistourne);
-            existingDetailReglementRistourne = detailReglementRistourneRepository.save(existingDetailReglementRistourne);
-            return modelMapper.map(existingDetailReglementRistourne, DetailReglementRistourneDTO.class);
-        }
-        return null;
-    }
 
     @Override
-    public void deleteDetailReglementRistourne(Long id) {
-        detailReglementRistourneRepository.deleteById(id);
+    public DetailReglementRistourneDTO updateDetailReglementRistourne(Long id, DetailReglementRistourneDTO detailReglementRistourneDTO) {
+        Optional<DetailReglementRistourne> optionalDetailReglementRistourne = detailReglementRistourneRepository.findById(id);
+        if (optionalDetailReglementRistourne.isPresent()) {
+            DetailReglementRistourne detailReglementRistourne = optionalDetailReglementRistourne.get();
+            detailReglementRistourne.setIdCredit(detailReglementRistourneDTO.getIdCredit());
+            detailReglementRistourne.setDateEcheance(detailReglementRistourneDTO.getDateEcheance());
+            detailReglementRistourne.setMontantRistoune(detailReglementRistourneDTO.getMontantRistoune());
+            detailReglementRistourne.setDateReglement(detailReglementRistourneDTO.getDateReglement());
+            detailReglementRistourne.setRefReglement(detailReglementRistourneDTO.getRefReglement());
+
+            detailReglementRistourne = detailReglementRistourneRepository.save(detailReglementRistourne);
+            return modelMapper.map(detailReglementRistourne, DetailReglementRistourneDTO.class);
+        }
+        throw new EntityNotFoundException("ChangementDebiteur not found with id: " + id);
     }
 
     @Override
@@ -51,12 +65,23 @@ public class DReglementRistourneServiceImpl implements DReglementRistourneServic
         Optional<DetailReglementRistourne> optionalDetailReglementRistourne = detailReglementRistourneRepository.findById(id);
         return optionalDetailReglementRistourne.map(detailReglementRistourne -> modelMapper.map(detailReglementRistourne, DetailReglementRistourneDTO.class)).orElse(null);
     }
-
+    @Transactional
     @Override
     public List<DetailReglementRistourneDTO> getAllDetailReglementRistourne() {
         List<DetailReglementRistourne> detailReglementRistourneList = detailReglementRistourneRepository.findAll();
         return detailReglementRistourneList.stream()
                 .map(detailReglementRistourne -> modelMapper.map(detailReglementRistourne, DetailReglementRistourneDTO.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void deactivateDetailReglementRistourne(Long id) {
+        Optional<DetailReglementRistourne> detailReglementRistourne = detailReglementRistourneRepository.findById(id);
+        if (detailReglementRistourne.isPresent()) {
+            DetailReglementRistourne changement = detailReglementRistourne.get();
+            changement.setIsActive(false); // Met à jour le champ isActive
+            detailReglementRistourneRepository.save(changement);
+        }
     }
 }

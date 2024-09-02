@@ -9,9 +9,10 @@ public interface EtatAnnulationMejService {
 
     EtatAnnulationMejDTO updateEtatAnnulationMej(Long id, EtatAnnulationMejDTO etatAnnulationMejDTO);
 
-    void deleteEtatAnnulationMej(Long id);
-
     EtatAnnulationMejDTO getEtatAnnulationMejById(Long id);
 
     List<EtatAnnulationMejDTO> getAllEtatAnnulationMej();
+
+    void deactivateEtatAnnulationMej(Long id);
+
 }

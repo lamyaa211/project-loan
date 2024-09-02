@@ -7,9 +7,7 @@ public class AnnexeDTO {
 
         private Long id;
         private String libelle;
-        private String type;
-        private String codeBq;
-        private String nbreLigne;
+       private String codeBq;
         private String numeroAnnexe;
 
     public Long getId() {
@@ -28,14 +26,6 @@ public class AnnexeDTO {
         this.codeBq = codeBq;
     }
 
-    public String getNbreLigne() {
-        return nbreLigne;
-    }
-
-    public void setNbreLigne(String nbreLigne) {
-        this.nbreLigne = nbreLigne;
-    }
-
     public String getNumeroAnnexe() {
         return numeroAnnexe;
     }
@@ -44,9 +34,6 @@ public class AnnexeDTO {
         this.numeroAnnexe = numeroAnnexe;
     }
 
-    public String getType() {return type;}
-
-    public void setType(String type) {this.type = type;}
 
     public String getLibelle() {
         return libelle;
@@ -55,5 +42,6 @@ public class AnnexeDTO {
     public void setLibelle(String libelle) {
         this.libelle = libelle;
     }
+
 }
 

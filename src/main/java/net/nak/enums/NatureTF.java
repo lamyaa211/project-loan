@@ -1,16 +1,31 @@
 package net.nak.enums;
 
 public enum NatureTF {
-    M("Mère"),
-    P("Parcellaire");
+    M("M", "Mère"),
+    P("P", "Parcellaire");
 
-    private final String description;
+    private String code;
+    private String label;
 
-    NatureTF(String description) {
-        this.description = description;
+    NatureTF(String code, String label) {
+        this.code = code;
+        this.label = label;
     }
 
-    public String getDescription() {
-        return description;
+    public static NatureTF fromCode(String code) {
+        for (NatureTF nature : NatureTF.values()) {
+            if (nature.code.equals(code)) {
+                return nature;
+            }
+        }
+        throw new IllegalArgumentException("Code NatureTF invalide : " + code);
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getLabel() {
+        return label;
     }
 }

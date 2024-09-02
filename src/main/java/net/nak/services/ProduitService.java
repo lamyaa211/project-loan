@@ -16,11 +16,6 @@ public interface ProduitService {
     ProduitEntrepriseDTO modifierProduitEntreprise(Long id, ProduitEntrepriseDTO produitEntrepriseDTO);
 
     ProduitParticulierDTO modifierProduitParticulier(Long id, ProduitParticulierDTO produitParticulierDTO);
-
-    void supprimerProduitEntreprise(Long id);
-
-    void supprimerProduitParticulier(Long id);
-
     List<ProduitEntrepriseDTO> getAllProduitsEntreprise();
 
     List<ProduitParticulierDTO> getAllProduitsParticulier();
@@ -38,5 +33,10 @@ public interface ProduitService {
     boolean existsProduitParticulierByNom(String nom);
     boolean existsProduitEntrepriseByNom(String nom);
 
+    void deactivateProduitEntreprise(Long id);
+    void deactivateProduitParticulier(Long id);
+
+    List<ProduitEntrepriseDTO> getProduitsEntrepriseDuMois();
+    List<ProduitParticulierDTO> getProduitsParticulierDuMois();
 
 }

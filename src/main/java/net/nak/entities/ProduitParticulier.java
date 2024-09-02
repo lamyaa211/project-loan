@@ -13,25 +13,26 @@ import java.util.List;
 public class ProduitParticulier extends Produit{
 
     @ManyToOne
-    private AnnulationTAM annulationTAM;
-
-    @ManyToOne
+    @JoinColumn(name = "changementDebiteur_id")  // the foreign key column
     private ChangementDebiteur changementDebiteur;
 
     @ManyToOne
-    private EtatEvenementsAvantCredit etatEvenementsAvantCredit;
+    @JoinColumn(name = "demandeGarantieFOG_id")  // the foreign key column
+    private DemandeGarantieFOG demandeGarantieFOG;
 
     @ManyToOne
-    private ListeDemandesBenifice listeDemandesBenifice;
+    @JoinColumn(name = "demandeMEJGarantie_id")  // the foreign key column
+    private DemandeMEJGarantie demandeMEJGarantie;
 
     @ManyToOne
-    private EtatDeblocageP etatDeblocageP;
+    @JoinColumn(name = "etatImpayes_id")  // the foreign key column
+    private EtatImpayes etatImpayes;
 
     @ManyToOne
-    private SuiviActionRecouvrementP suiviActionRecouvrementP;
+    @JoinColumn(name = "etatReglementPrime_id")  // the foreign key column
+    private EtatReglementPrime  etatReglementPrime;
 
-    @ManyToOne
-    private DemandeIndemnisationP demandeIndemnisationP;
-
+    @Column(name = "isActive")
+    private Boolean isActive = true;
 
 }

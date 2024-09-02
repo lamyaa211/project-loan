@@ -1,10 +1,8 @@
 package net.nak.RestControllers;
 
 import net.nak.DTO.AnnexeDTO;
-import net.nak.entities.Annexe;
 import net.nak.services.AnnexeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,8 +26,7 @@ public class AnnexeRestController {
         return ResponseEntity.ok(updatedAnnexeDTO);
     }
 
-
-    @GetMapping("/getAnnulationTAMById/{id}")
+    @GetMapping("/getAnnexeById/{id}")
     public ResponseEntity<AnnexeDTO> getAnnexeById(@PathVariable Long id) {
         AnnexeDTO annexeDTO = annexeService.getAnnexeById(id);
         return ResponseEntity.ok(annexeDTO);
@@ -40,11 +37,4 @@ public class AnnexeRestController {
         List<AnnexeDTO> annexeDTOList = annexeService.getAllAnnexe();
         return ResponseEntity.ok(annexeDTOList);
     }
-
-    @GetMapping("/getAllAnnexeTypes")
-    public ResponseEntity<List<String>> getAllAnnexeTypes() {
-        List<String> allAnnexeTypes = annexeService.getAllAnnexeTypes();
-        return new ResponseEntity<>(allAnnexeTypes, HttpStatus.OK);
-    }
-
 }

@@ -1,5 +1,8 @@
 package net.nak.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 public enum ObjetCredit {
     ACHAT_LOGEMENT(1, "Achat de logement"),
     CONSTRUCTION_LOGEMENT(2, "Construction de logement"),
@@ -13,20 +16,22 @@ public enum ObjetCredit {
         this.label = label;
     }
 
-    public int getCode() {
-        return code;
-    }
-
     public String getLabel() {
         return label;
     }
 
-    public static ObjetCredit getByCode(int code) {
+    @JsonValue
+    public int getCode() {
+        return code;
+    }
+
+    @JsonCreator
+    public static ObjetCredit fromCode(int code) {
         for (ObjetCredit objetCredit : ObjetCredit.values()) {
-            if (objetCredit.getCode() == code) {
+            if (objetCredit.code == code) {
                 return objetCredit;
             }
         }
-        throw new IllegalArgumentException("Code d'objet de crédit invalide : " + code);
+        throw new IllegalArgumentException("Code ObjetCredit invalide : " + code);
     }
 }

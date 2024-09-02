@@ -1,6 +1,8 @@
 package net.nak.DTO;
 
 import lombok.Data;
+
+import javax.persistence.Column;
 import java.util.Date;
 
 public class ProduitDTO {
@@ -8,6 +10,10 @@ public class ProduitDTO {
     private String codeProduit;
     private String nom;
     private Date date;
+
+    private String description;
+
+    private Boolean isActive = true;
 
     public Long getId() {
         return id;
@@ -39,5 +45,17 @@ public class ProduitDTO {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
     }
 }

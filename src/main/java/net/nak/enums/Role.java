@@ -1,8 +1,9 @@
 package net.nak.enums;
 
 public enum Role {
-    USER,
+    UTILISATEUR,
     ADMIN_BO,
     ADMIN_CENTRAL,
-    ADMIN_TECHNIQUE
+    ADMIN_SI,
+    ADMIN_HAB
 }

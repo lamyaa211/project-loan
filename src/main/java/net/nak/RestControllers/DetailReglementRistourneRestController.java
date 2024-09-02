@@ -28,12 +28,6 @@ public class DetailReglementRistourneRestController {
             return ResponseEntity.ok(updateddetailReglementRistourneDTO);
         }
 
-        @DeleteMapping("/deleteDetailReglementRistourne/{id}")
-        public ResponseEntity<String> deleteDetailReglementRistourne(@PathVariable Long id) {
-            dReglementRistourneService.deleteDetailReglementRistourne(id);
-            return ResponseEntity.ok(" Detail Reglement Ristourne deleted successfully");
-        }
-
         @GetMapping("/getDetailReglementRistourneById/{id}")
         public ResponseEntity<DetailReglementRistourneDTO> getDetailReglementRistourneById(@PathVariable Long id) {
             DetailReglementRistourneDTO detailReglementRistourneDTO = dReglementRistourneService.getDetailReglementRistourneById(id);
@@ -46,5 +40,10 @@ public class DetailReglementRistourneRestController {
             return ResponseEntity.ok(detailReglementRistourneDTOList);
         }
 
+    @PutMapping("/{id}/deactivateDetailReglementRistourne")
+    public ResponseEntity<Void> deactivateDetailReglementRistourne(@PathVariable Long id) {
+        dReglementRistourneService.deactivateDetailReglementRistourne(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

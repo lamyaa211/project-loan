@@ -2,39 +2,25 @@ package net.nak.DTO;
 
 import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 import net.nak.entities.*;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 @Getter
+@Setter
 public class ProduitEntrepriseDTO extends ProduitDTO {
 
-    private TAM tam;
-    private EtatDeblocageE etatDeblocageE;
     private DetailReglementRistourne detailReglementRistourne;
-    private SuiviActionRecouvrementE suiviActionRecouvrementE;
+
     private EtatAnnulationMEJ etatAnnulationMEJ;
+
     private ReglementMEJ reglementMEJ;
 
-    public void setTam(TAM tam) {
-        this.tam = tam;
-    }
+    private EtatRecouvrementRealise etatRecouvrementRealise;
 
-    public void setEtatDeblocageE(EtatDeblocageE etatDeblocageE) {
-        this.etatDeblocageE = etatDeblocageE;
-    }
+    private RestitutionMEJ restitutionMEJ;
+    private Boolean isActive = true;
 
-    public void setDetailReglementRistourne(DetailReglementRistourne detailReglementRistourne) {
-        this.detailReglementRistourne = detailReglementRistourne;
-    }
-
-    public void setSuiviActionRecouvrementE(SuiviActionRecouvrementE suiviActionRecouvrementE) {
-        this.suiviActionRecouvrementE = suiviActionRecouvrementE;
-    }
-
-    public void setEtatAnnulationMEJ(EtatAnnulationMEJ etatAnnulationMEJ) {
-        this.etatAnnulationMEJ = etatAnnulationMEJ;
-    }
-
-    public void setReglementMEJ(ReglementMEJ reglementMEJ) {
-        this.reglementMEJ = reglementMEJ;
-    }
 }

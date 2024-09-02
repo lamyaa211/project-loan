@@ -1,6 +1,5 @@
 package net.nak.RestControllers;
 
-import net.nak.DTO.AnnulationTAMDTO;
 import net.nak.DTO.EtatAnnulationMejDTO;
 import net.nak.services.EtatAnnulationMejService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +26,6 @@ public class EtatAnnulationMejRestController {
             return ResponseEntity.ok(updatedEtatAnnulationMejDTO);
         }
 
-        @DeleteMapping("/deleteEtatAnnulationMej/{id}")
-        public ResponseEntity<String> deleteEtatAnnulationMej(@PathVariable Long id) {
-            etatAnnulationMejService.deleteEtatAnnulationMej(id);
-            return ResponseEntity.ok("Etat Annulation MEJ deleted successfully");
-        }
-
         @GetMapping("/getEtatAnnulationMejById/{id}")
         public ResponseEntity<EtatAnnulationMejDTO> getEtatAnnulationMejById(@PathVariable Long id) {
             EtatAnnulationMejDTO etatAnnulationMejDTO = etatAnnulationMejService.getEtatAnnulationMejById(id);
@@ -45,5 +38,10 @@ public class EtatAnnulationMejRestController {
             return ResponseEntity.ok(etatAnnulationMejDTOList);
         }
 
+    @PutMapping("/{id}/deactivateEtatAnnulationMej")
+    public ResponseEntity<Void> deactivateEtatAnnulationMej(@PathVariable Long id) {
+        etatAnnulationMejService.deactivateEtatAnnulationMej(id);
+        return ResponseEntity.ok().build();
+    }
 
 }

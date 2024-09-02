@@ -17,16 +17,9 @@ public class Annexe {
     @Column(name = "libelle")
     private String libelle;
 
-    @Column(name = "type")
-    private String type;
-
     @Column(name = "code_bq")
     private String codeBq;
 
-    @Column(name = "nbre_ligne")
-    private String nbreLigne;
-
     @Column(name = "numero_annexe")
     private String numeroAnnexe;
-
 }

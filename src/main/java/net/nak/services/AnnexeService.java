@@ -1,7 +1,6 @@
 package net.nak.services;
 
 import net.nak.DTO.AnnexeDTO;
-import net.nak.DTO.AnnulationTAMDTO;
 
 import java.util.List;
 
@@ -16,6 +15,5 @@ public interface AnnexeService {
 
     List<AnnexeDTO> getAllAnnexe();
 
-    List<String> getAllAnnexeTypes();
 
 }

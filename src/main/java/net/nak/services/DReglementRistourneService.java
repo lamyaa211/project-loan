@@ -9,9 +9,10 @@ public interface DReglementRistourneService {
 
     DetailReglementRistourneDTO updateDetailReglementRistourne(Long id, DetailReglementRistourneDTO detailReglementRistourneDTO);
 
-    void deleteDetailReglementRistourne(Long id);
-
     DetailReglementRistourneDTO getDetailReglementRistourneById(Long id);
 
     List<DetailReglementRistourneDTO> getAllDetailReglementRistourne();
+
+    void deactivateDetailReglementRistourne(Long id);
+
 }
